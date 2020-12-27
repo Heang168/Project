@@ -9,7 +9,9 @@
 					<p>Far far away, behind the word mountains, far from the countries, there live the blind texts.</p>
 				</div>
 			</div>
-			<form action="#">
+			<form action="contact" method="post">
+				@csrf
+
 				<div class="row animate-box">
 					<div class="col-md-6">
 						<h3 class="section-title">Our Address</h3>
@@ -22,25 +24,26 @@
 						</ul>
 					</div>
 					<div class="col-md-6">
+	
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Name">
+									<input type="text" class="form-control" placeholder="Your Name" name="name">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Email">
+									<input type="text" class="form-control" placeholder="Your Email" name="email">
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
-									<textarea name="" class="form-control" id="" cols="30" rows="7" placeholder="Message"></textarea>
+									<textarea name="message" class="form-control" id="" cols="30" rows="7" placeholder="Message"></textarea>
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
-									<input type="submit" value="Send Message" class="btn btn-primary">
+									<input type="submit" value="Send Message" class="btn btn-primary" name='submit'>
 								</div>
 							</div>
 						</div>
