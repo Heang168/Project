@@ -51,3 +51,12 @@ Route::get('/profile', function (){
 });
 
 Route::get('/test', [testController::class, 'index'] ); 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//admin panel
+
+Route::get('/test',function(){
+    return view('admin.dashboard.index');
+});
