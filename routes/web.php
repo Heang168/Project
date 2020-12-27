@@ -10,8 +10,7 @@ use App\http\Controllers\locationController;
 use App\http\Controllers\restaurantController;
 use App\http\Controllers\thingController;
 use App\http\Controllers\testController;
-
-
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +55,17 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //admin panel
-
-Route::get('/test',function(){
-    return view('admin.dashboard.index');
+Route::group(['prefix' => 'admin', 'middleware'=>['auth']],function(){
+    Route::get('/admin', function () {
+        return view('admin.dashboard.index');
+    });
+    Route::get('/menu', function () {
+        return view('admin.menu.menu');
+    });
 });
+
+Auth::routes();
+
+Route::get('/home', function() {
+    return view('home');
+})->name('home')->middleware('auth');
